@@ -33,7 +33,8 @@ const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
 
     const reader = new FileReader()
     reader.onload = (e: ProgressEvent<FileReader>) => {
-      if (e.target?.result) {
+      const result = e.target?.result
+      if (result) {
         const img = new Image()
         img.onload = () => {
           // Проверяем размеры изображения
@@ -41,12 +42,12 @@ const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
             setError('Image dimensions are too large (max 10000x10000)')
             return
           }
-          onImageUpload(e.target.result as string)
+          onImageUpload(result as string)
         }
         img.onerror = () => {
           setError('Failed to load image')
         }
-        img.src = e.target.result as string
+        img.src = result as string
       }
     }
     reader.onerror = () => {

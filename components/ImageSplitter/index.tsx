@@ -233,14 +233,6 @@ const ImageSplitter: React.FC<ImageSplitterProps> = ({ image, onReset }) => {
 
       <div className="flex flex-wrap justify-center gap-4 pt-2">
         <button
-          onClick={handleDownloadAll}
-          className="toggle-button toggle-button-active"
-          disabled={splitPreviews.length === 0}
-        >
-          <Download className="w-5 h-5" />
-          Download All Parts
-        </button>
-        <button
           onClick={handleDownloadZip}
           className="toggle-button toggle-button-active"
           disabled={splitPreviews.length === 0}

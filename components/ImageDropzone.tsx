@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Upload, ImageIcon, AlertCircle } from 'lucide-react'
@@ -10,7 +10,6 @@ interface ImageDropzoneProps {
 const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
   const [isDragging, setIsDragging] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setError(null)
@@ -57,7 +56,7 @@ const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
     reader.readAsDataURL(file)
   }, [onImageUpload])
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     accept: {
       'image/*': ['.png', '.jpg', '.jpeg', '.webp', '.gif']
@@ -66,18 +65,12 @@ const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
     noClick: true
   })
 
-  const handleClick = useCallback((e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    inputRef.current?.click()
-  }, [])
-
   return (
     <div
       {...getRootProps()}
       className="p-8 rounded-lg flex flex-col items-center justify-center gap-4 cursor-pointer border border-border/50 bg-background/50 backdrop-blur-sm"
     >
-      <input {...getInputProps()} ref={inputRef} aria-label="File input" />
+      <input {...getInputProps()} aria-label="File input" />
       
       <div className="relative">
         <div className="w-20 h-20 rounded-full bg-[rgb(var(--secondary)_/_0.5)] flex items-center justify-center shadow-lg">
@@ -122,7 +115,10 @@ const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
           <button
             type="button"
             className="px-4 py-2 rounded bg-primary text-primary-foreground text-sm flex items-center gap-2 hover:bg-primary/90"
-            onClick={handleClick}
+            onClick={(e) => {
+              e.stopPropagation()
+              open()
+            }}
           >
             <Upload className="w-4 h-4" />
             Select file

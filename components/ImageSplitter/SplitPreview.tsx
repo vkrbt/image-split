@@ -29,9 +29,9 @@ const SplitPreviewPart = memo(({ preview, index, onDownloadPart }: {
         </div>
         <button
           onClick={() => onDownloadPart(preview, index)}
-          className="px-2 py-1 rounded bg-primary text-primary-foreground text-xs flex items-center gap-1 flex-shrink-0 hover:bg-primary/90"
+          className="px-4 py-2.5 rounded bg-primary text-primary-foreground text-sm flex items-center gap-2 flex-shrink-0 hover:bg-primary/90"
         >
-          <Download className="w-3 h-3" />
+          <Download className="w-4 h-4" />
           Download
         </button>
       </div>

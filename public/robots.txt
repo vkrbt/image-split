@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Sitemap: https://image-split.com/sitemap.xml
+google-site-verification: CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc 

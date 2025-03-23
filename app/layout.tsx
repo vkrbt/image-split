@@ -7,10 +7,36 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
   description: 'Free online tool to split images into multiple parts. Upload your image, choose split options, and download the results instantly. Supports various image formats.',
-  keywords: 'image splitter, image divider, split image online, image cropping tool, free image tool',
+  keywords: ['image splitter', 'image divider', 'split image online', 'image cropping tool', 'free image tool', 'image grid maker', 'photo splitter', 'image parts', 'image segmentation'],
   verification: {
     google: 'CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc',
   },
+  metadataBase: new URL('https://image-split.com'),
+  authors: [{ name: 'Image Splitter Team' }],
+  creator: 'Image Splitter Team',
+  publisher: 'Image Splitter',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/safari-pinned-tab.svg',
+        color: '#5bbad5',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
     description: 'Free online tool to split images into multiple parts. Upload your image, choose split options, and download the results instantly.',
@@ -32,6 +58,7 @@ export const metadata: Metadata = {
     title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
     description: 'Free online tool to split images into multiple parts. Upload your image, choose split options, and download the results instantly.',
     images: ['https://image-split.com/og-image.jpg'],
+    creator: '@imagesplitter',
   },
   robots: {
     index: true,
@@ -47,6 +74,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://image-split.com',
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  category: 'technology',
+  classification: 'web application',
+  referrer: 'origin-when-cross-origin',
+  applicationName: 'Image Splitter',
+  generator: 'Next.js',
+  colorScheme: 'light dark',
 }
 
 export default function RootLayout({

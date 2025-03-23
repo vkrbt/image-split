@@ -9,11 +9,6 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react'],
-  },
-
   webpack: (config) => {
     config.module.rules.push({
       test: /\.worker\.(js|ts)$/,

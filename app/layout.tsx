@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -7,22 +6,32 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
-  description: 'Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid. Supports PNG, JPG, WebP formats. No registration required.',
-  keywords: 'image splitter, image divider, split image online, image grid maker, image parts, image cropping tool, image split tool, free image splitter',
+  description: 'Free online tool to split images into multiple parts. Upload your image, choose split options, and download the results instantly. Supports various image formats.',
+  keywords: 'image splitter, image divider, split image online, image cropping tool, free image tool',
+  verification: {
+    google: 'CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc',
+  },
   openGraph: {
     title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
-    description: 'Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid. Supports PNG, JPG, WebP formats.',
-    type: 'website',
-    locale: 'en_US',
+    description: 'Free online tool to split images into multiple parts. Upload your image, choose split options, and download the results instantly.',
+    url: 'https://image-split.com',
     siteName: 'Image Splitter',
+    images: [
+      {
+        url: 'https://image-split.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Image Splitter - Split Images Online',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
-    description: 'Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid. Supports PNG, JPG, WebP formats.',
-  },
-  alternates: {
-    canonical: 'https://image-split.com',
+    description: 'Free online tool to split images into multiple parts. Upload your image, choose split options, and download the results instantly.',
+    images: ['https://image-split.com/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -35,8 +44,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc',
+  alternates: {
+    canonical: 'https://image-split.com',
   },
 }
 

@@ -1,128 +1,117 @@
 import React, { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Upload, ImageIcon, AlertCircle } from 'lucide-react'
+import { Upload, ImageIcon, AlertCircle, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface ImageDropzoneProps {
-  onImageUpload: (dataUrl: string) => void
+  onImageUpload: (file: File) => void
+  maxSize?: number
+  maxWidth?: number
+  maxHeight?: number
 }
 
-const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
+export function ImageDropzone({
+  onImageUpload,
+  maxSize = 10 * 1024 * 1024, // 10MB
+  maxWidth = 4096,
+  maxHeight = 4096,
+}: ImageDropzoneProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    setError(null)
-    const file = acceptedFiles[0]
-    
-    if (!file) {
-      setError('No file selected')
-      return
-    }
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    try {
+      setIsLoading(true)
+      setError(null)
 
-    if (!file.type.startsWith('image/')) {
-      setError('Please select an image file')
-      return
-    }
+      if (acceptedFiles.length === 0) {
+        setError('No file selected')
+        return
+      }
 
-    // Проверяем размер файла (10MB)
-    if (file.size > 10 * 1024 * 1024) {
-      setError('File size exceeds 10MB limit')
-      return
-    }
+      const file = acceptedFiles[0]
 
-    const reader = new FileReader()
-    reader.onload = (e: ProgressEvent<FileReader>) => {
-      const result = e.target?.result
-      if (result) {
+      // Проверка типа файла
+      if (!file.type.startsWith('image/')) {
+        setError('Please select an image file')
+        return
+      }
+
+      // Проверка размера файла
+      if (file.size > maxSize) {
+        setError(`File size should be less than ${maxSize / (1024 * 1024)}MB`)
+        return
+      }
+
+      // Проверка размеров изображения
+      const dimensions = await new Promise<{ width: number; height: number }>((resolve, reject) => {
         const img = new Image()
         img.onload = () => {
-          // Проверяем размеры изображения
-          if (img.width > 10000 || img.height > 10000) {
-            setError('Image dimensions are too large (max 10000x10000)')
-            return
-          }
-          onImageUpload(result as string)
+          resolve({
+            width: img.width,
+            height: img.height,
+          })
         }
-        img.onerror = () => {
-          setError('Failed to load image')
-        }
-        img.src = result as string
+        img.onerror = () => reject(new Error('Failed to load image'))
+        img.src = URL.createObjectURL(file)
+      })
+
+      if (dimensions.width > maxWidth || dimensions.height > maxHeight) {
+        setError(`Image dimensions should be less than ${maxWidth}x${maxHeight}px`)
+        return
       }
+
+      onImageUpload(file)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to process image')
+    } finally {
+      setIsLoading(false)
     }
-    reader.onerror = () => {
-      setError('Failed to read file')
-    }
-    reader.readAsDataURL(file)
-  }, [onImageUpload])
+  }, [maxSize, maxWidth, maxHeight, onImageUpload])
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.png', '.jpg', '.jpeg', '.webp', '.gif']
+      'image/*': ['.png', '.jpg', '.jpeg', '.webp']
     },
+    maxFiles: 1,
     multiple: false,
-    noClick: true
   })
 
   return (
-    <div
-      {...getRootProps()}
-      onClick={open}
-      className="p-8 rounded-lg flex flex-col items-center justify-center gap-4 cursor-pointer border border-border/50 bg-background/50 backdrop-blur-sm"
-    >
-      <input {...getInputProps()} aria-label="File input" />
-      
-      <div className="relative">
-        <div className="w-20 h-20 rounded-full bg-[rgb(var(--secondary)_/_0.5)] flex items-center justify-center shadow-lg">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={isDragActive ? 'drag' : 'normal'}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.15 }}
-            >
-              {isDragActive ? (
-                <ImageIcon className="w-10 h-10 text-primary" />
-              ) : (
-                <Upload className="w-10 h-10 text-primary" />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+    <div className="w-full">
+      <div
+        {...getRootProps()}
+        className={cn(
+          'relative flex flex-col items-center justify-center w-full p-6 border-2 border-dashed rounded-lg cursor-pointer transition-colors',
+          isDragActive ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20' : 'border-gray-300 dark:border-gray-700',
+          'hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/20'
+        )}
+      >
+        <input {...getInputProps()} />
+        <Upload className="w-12 h-12 mb-4 text-gray-400" />
+        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+          {isDragActive ? 'Drop the image here' : 'Drag & drop an image here, or click to select'}
+        </p>
+        <p className="text-xs text-gray-400 dark:text-gray-500">
+          Supports PNG, JPG, WebP (max {maxSize / (1024 * 1024)}MB)
+        </p>
       </div>
 
-      <div className="text-center">
-        <h2 className="text-xl md:text-2xl font-semibold mb-3">
-          {isDragActive ? 'Drop the image here' : 'Drop image here or click to upload'}
-        </h2>
-        <p className="text-sm md:text-base text-[rgb(var(--foreground-dimmed))]">
-          Supports PNG, JPG, WebP, GIF • Max 10MB
-        </p>
-        
-        {error && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-4 flex items-center justify-center gap-2 text-destructive"
-          >
-            <AlertCircle className="w-4 h-4" />
-            <span className="text-sm">{error}</span>
-          </motion.div>
-        )}
-        
-        <div className="mt-6 flex justify-center">
-          <button
-            type="button"
-            className="px-4 py-2 rounded bg-primary text-primary-foreground text-sm flex items-center gap-2 hover:bg-primary/90"
-            onClick={open}
-          >
-            <Upload className="w-4 h-4" />
-            Select file
-          </button>
+      {error && (
+        <div className="flex items-center gap-2 mt-2 text-sm text-red-500">
+          <X className="w-4 h-4" />
+          <span>{error}</span>
         </div>
-      </div>
+      )}
+
+      {isLoading && (
+        <div className="mt-2 text-sm text-gray-500">
+          Processing image...
+        </div>
+      )}
     </div>
   )
 }

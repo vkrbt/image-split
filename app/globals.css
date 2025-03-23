@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: 48 48 48;
+  --foreground-dimmed: 100 100 100;
+  --background: 255 255 255;
+  --background-muted: 245 245 245;
+  --primary: 96 165 250;
+  --primary-foreground: 255 255 255;
+  --secondary: 100 116 139;
+  --success: 34 197 94;
+  --danger: 239 68 68;
+  --border: 229 231 235;
+
+  /* Base */
+  --background: 245 245 255;
+  --foreground: 30 30 40;
+  
+  /* Primary */
+  --primary: 0 144 104; 
+  --primary-foreground: 255 255 255;
+  
+  /* Secondary */
+  --secondary: 214 223 230;
+  --secondary-foreground: 30 36 50;
+  
+  /* Muted */
+  --muted: 214 223 230;
+  --muted-foreground: 75 85 95;
+  
+  /* Accent */
+  --accent: 0 112 190;
+  --accent-foreground: 255 255 255;
+  
+  /* Destructive */
+  --destructive: 220 38 38;
+  --destructive-foreground: 255 255 255;
+  
+  /* Border */
+  --border: 214 223 230;
+  --input: 214 223 230;
+  --ring: 189 198 208;
+  
+  /* Card */
+  --card: 255 255 255;
+  --card-foreground: 30 30 35;
+  
+  /* Popover */
+  --popover: 255 255 255;
+  --popover-foreground: 30 30 35;
+  
+  /* Radius */
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Base */
+    --background: 15 23 42;
+    --foreground: 228 228 231;
+    --foreground-dimmed: 161 161 170;
+    
+    /* Primary - яркий акцент для темной темы */
+    --primary: 74 222 128;
+    --primary-foreground: 15 23 42;
+    
+    /* Secondary - темные элементы интерфейса */
+    --secondary: 30 41 59;
+    --secondary-foreground: 228 228 231;
+    
+    /* Muted - приглушенные элементы */
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
+    
+    /* Accent - второй акцент */
+    --accent: 59 130 246;
+    --accent-foreground: 15 23 42;
+    
+    /* Destructive */
+    --destructive: 239 68 68;
+    --destructive-foreground: 250 250 250;
+    
+    /* Border и другие разделители */
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 51 65 85;
+    
+    /* Card и Popover - для модальных окон и карточек */
+    --card: 30 41 59;
+    --card-foreground: 228 228 231;
+    --popover: 30 41 59;
+    --popover-foreground: 228 228 231;
+  }
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+  transition-property: color, background;
+  transition-duration: 200ms;
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-[rgb(var(--background)_/_0.7)] border border-[rgb(var(--border))] shadow-sm p-4 rounded-lg;
+  }
+  
+  /* Модификация для мобильных устройств - без рамок */
+  @media (max-width: 768px) {
+    .glass {
+      @apply bg-[rgb(var(--secondary)_/_0.15)] backdrop-blur-sm border-0 rounded-none;
+    }
+    
+    .glass-card {
+      @apply bg-transparent shadow-none border-0 p-3;
+    }
+    
+    .control-container {
+      @apply bg-[rgb(var(--secondary)_/_0.1)] rounded-md border-0 shadow-none;
+    }
+  }
+  
+  /* Ещё один класс для карточек без рамок на мобильных */
+  .glass-card {
+    @apply backdrop-blur-md bg-[rgb(var(--background)_/_0.7)] border border-[rgb(var(--border))] shadow-sm p-4 rounded-lg;
+  }
+  
+  /* Контейнер для контролов с сохранением стиля */
+  .control-container {
+    @apply backdrop-blur-md bg-[rgb(var(--background)_/_0.7)] border border-[rgb(var(--border))] shadow-sm p-6 rounded-lg;
+  }
+  
+  .gradient-border {
+    @apply relative;
+    background-clip: padding-box;
+    position: relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, rgb(var(--primary)), rgb(var(--accent)));
+    opacity: 0.6;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .control-label {
+    @apply block text-[rgb(var(--foreground-dimmed))] text-sm font-medium mb-2;
+  }
+
+  .toggle-button {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-md font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[rgb(var(--primary)_/_0.3)] border-2 transition-colors duration-150;
+  }
+
+  .toggle-button-active {
+    @apply bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))] shadow-md border-[rgb(var(--primary))];
+  }
+
+  .toggle-button-inactive {
+    @apply bg-[rgb(var(--secondary)_/_0.1)] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--secondary)_/_0.2)] border-transparent;
+  }
+  
+  /* Оптимизация для мобильных - меньше отступы и размеры кнопок */
+  @media (max-width: 768px) {
+    .toggle-button {
+      @apply px-4 py-2 text-sm rounded;
+    }
+    
+    .control-label {
+      @apply text-xs mb-1;
+    }
+    
+    .space-y-8 > * {
+      @apply my-4;
+    }
+  }
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 640px) {
+  .glass {
+    @apply backdrop-blur-md bg-[rgb(var(--background)_/_0.5)] border-0 p-3;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-[rgb(var(--background)_/_0.5)] border-0 p-3 shadow-none;
+  }
+  
+  .control-container {
+    @apply backdrop-blur-md bg-transparent border-0 p-3 shadow-none;
+  }
+  
+  .toggle-button {
+    @apply px-3 py-1.5 text-xs;
+  }
+  
+  /* Увеличиваем отступы между элементами для лучшей читаемости */
+  .space-y-6 {
+    @apply space-y-4;
+  }
+  
+  .space-y-8 {
+    @apply space-y-6;
+  }
+  
+  /* Уменьшаем размер заголовков */
+  h1, h2 {
+    @apply text-xl;
+  }
+  
+  h3 {
+    @apply text-base;
+  }
+} 

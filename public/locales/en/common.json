@@ -1,0 +1,21 @@
+{
+  "title": "Image Splitter",
+  "description": "Professional tool for splitting images into customizable parts. Supports all major formats with real-time preview.",
+  "dropzone": {
+    "title": "Drop image here or click to upload",
+    "dragActive": "Drop the image here",
+    "supportedFormats": "Supports PNG, JPG, WebP • Max 10MB"
+  },
+  "splitter": {
+    "direction": "Split Direction",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "grid": "Grid",
+    "parts": "Number of parts",
+    "columns": "Columns",
+    "rows": "Rows",
+    "part": "Part",
+    "downloadAll": "Download All Parts",
+    "startOver": "Start Over"
+  }
+} 

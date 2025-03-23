@@ -65,66 +65,70 @@ const ImageDropzone = ({ onImageUpload }: ImageDropzoneProps) => {
     noClick: true
   })
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    open()
+  }
+
   return (
-    <div
-      {...getRootProps()}
-      className="p-8 rounded-lg flex flex-col items-center justify-center gap-4 cursor-pointer border border-border/50 bg-background/50 backdrop-blur-sm"
-    >
-      <input {...getInputProps()} aria-label="File input" />
-      
-      <div className="relative">
-        <div className="w-20 h-20 rounded-full bg-[rgb(var(--secondary)_/_0.5)] flex items-center justify-center shadow-lg">
-          <AnimatePresence mode="wait">
+    <div className="flex flex-col gap-4">
+      <div
+        {...getRootProps()}
+        onClick={handleClick}
+        className="p-8 rounded-lg flex flex-col items-center justify-center gap-4 cursor-pointer border border-border/50 bg-background/50 backdrop-blur-sm"
+      >
+        <input {...getInputProps()} aria-label="File input" />
+        
+        <div className="relative">
+          <div className="w-20 h-20 rounded-full bg-[rgb(var(--secondary)_/_0.5)] flex items-center justify-center shadow-lg">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={isDragActive ? 'drag' : 'normal'}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.15 }}
+              >
+                {isDragActive ? (
+                  <ImageIcon className="w-10 h-10 text-primary" />
+                ) : (
+                  <Upload className="w-10 h-10 text-primary" />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-xl md:text-2xl font-semibold mb-3">
+            {isDragActive ? 'Drop the image here' : 'Drop image here or click to upload'}
+          </h2>
+          <p className="text-sm md:text-base text-[rgb(var(--foreground-dimmed))]">
+            Supports PNG, JPG, WebP, GIF • Max 10MB
+          </p>
+          
+          {error && (
             <motion.div
-              key={isDragActive ? 'drag' : 'normal'}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.15 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-4 flex items-center justify-center gap-2 text-destructive"
             >
-              {isDragActive ? (
-                <ImageIcon className="w-10 h-10 text-primary" />
-              ) : (
-                <Upload className="w-10 h-10 text-primary" />
-              )}
+              <AlertCircle className="w-4 h-4" />
+              <span className="text-sm">{error}</span>
             </motion.div>
-          </AnimatePresence>
+          )}
         </div>
       </div>
 
-      <div className="text-center">
-        <h2 className="text-xl md:text-2xl font-semibold mb-3">
-          {isDragActive ? 'Drop the image here' : 'Drop image here or click to upload'}
-        </h2>
-        <p className="text-sm md:text-base text-[rgb(var(--foreground-dimmed))]">
-          Supports PNG, JPG, WebP, GIF • Max 10MB
-        </p>
-        
-        {error && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-4 flex items-center justify-center gap-2 text-destructive"
-          >
-            <AlertCircle className="w-4 h-4" />
-            <span className="text-sm">{error}</span>
-          </motion.div>
-        )}
-        
-        <div className="mt-6 flex justify-center">
-          <button
-            type="button"
-            className="px-4 py-2 rounded bg-primary text-primary-foreground text-sm flex items-center gap-2 hover:bg-primary/90"
-            onClick={(e) => {
-              e.stopPropagation()
-              open()
-            }}
-          >
-            <Upload className="w-4 h-4" />
-            Select file
-          </button>
-        </div>
-      </div>
+      <button
+        type="button"
+        onClick={handleClick}
+        className="w-full px-8 py-4 rounded-lg bg-primary text-primary-foreground text-lg font-medium flex items-center justify-center gap-3 hover:bg-primary/90 transition-colors"
+      >
+        <Upload className="w-6 h-6" />
+        Select file
+      </button>
     </div>
   )
 }

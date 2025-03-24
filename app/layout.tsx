@@ -2,25 +2,35 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import JsonLd from '@/components/JsonLd'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
-  description: 'Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid. Supports PNG, JPG, WebP formats. No registration required.',
-  keywords: 'image splitter, image divider, split image online, image grid maker, image parts, image cropping tool, image split tool, free image splitter',
+  title: 'Image Splitter for Instagram | Split Images for Social Media | Free Online Tool',
+  description: 'Free online tool to split images for Instagram, Facebook, Twitter and other social media. Create perfect grid layouts, split images horizontally or vertically. Supports all popular formats. No registration required.',
+  keywords: 'instagram image splitter, social media image splitter, split image for instagram, instagram grid maker, image split tool, split image online, free image splitter, facebook image splitter, twitter image splitter, social media image divider, instagram grid layout, image grid maker, split photos for instagram, instagram photo splitter',
   openGraph: {
-    title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
-    description: 'Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid. Supports PNG, JPG, WebP formats.',
+    title: 'Image Splitter for Instagram | Split Images for Social Media | Free Online Tool',
+    description: 'Free online tool to split images for Instagram, Facebook, Twitter and other social media. Create perfect grid layouts, split images horizontally or vertically. Supports all popular formats.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Image Splitter',
+    siteName: 'Image Splitter for Instagram',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Image Splitter for Instagram - Split your images for social media',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Image Splitter - Split Images Online | Free Image Divider Tool',
-    description: 'Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid. Supports PNG, JPG, WebP formats.',
+    title: 'Image Splitter for Instagram | Split Images for Social Media | Free Online Tool',
+    description: 'Free online tool to split images for Instagram, Facebook, Twitter and other social media. Create perfect grid layouts, split images horizontally or vertically. Supports all popular formats.',
+    images: ['/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://image-split.com',
@@ -39,6 +49,17 @@ export const metadata: Metadata = {
   verification: {
     google: 'CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc',
   },
+  category: 'image editing',
+  classification: 'image splitter, social media tools, instagram tools',
+  referrer: 'origin-when-cross-origin',
+  authors: [{ name: 'Image Splitter Team' }],
+  creator: 'Image Splitter Team',
+  publisher: 'Image Splitter',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
 }
 
 export default function RootLayout({
@@ -49,6 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <JsonLd />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MHBTVPD8VT"
           strategy="afterInteractive"

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://image-split.com
+
+# Sitemaps
+Sitemap: https://image-split.com/sitemap.xml

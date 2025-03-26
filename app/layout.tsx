@@ -8,29 +8,29 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Image Splitter for Instagram | Split Images for Social Media | Free Online Tool',
-  description: 'Free online tool to split images for Instagram, Facebook, Twitter and other social media. Create perfect grid layouts, split images horizontally or vertically. Supports all popular formats. No registration required.',
-  keywords: 'instagram image splitter, social media image splitter, split image for instagram, instagram grid maker, image split tool, split image online, free image splitter, facebook image splitter, twitter image splitter, social media image divider, instagram grid layout, image grid maker, split photos for instagram, instagram photo splitter',
+  title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
+  description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, web layouts, and more. Process images directly in your browser - no server storage.',
+  keywords: 'image splitter, split image online, split image tool, instagram grid maker, image grid splitter, photo splitter, image divider, split photos for instagram, free image splitter, browser-based image splitter, secure image splitter',
   openGraph: {
-    title: 'Image Splitter for Instagram | Split Images for Social Media | Free Online Tool',
-    description: 'Free online tool to split images for Instagram, Facebook, Twitter and other social media. Create perfect grid layouts, split images horizontally or vertically. Supports all popular formats.',
+    title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
+    description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, web layouts, and more. Process images directly in your browser - no server storage.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Image Splitter for Instagram',
+    siteName: 'Image-Split.com',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'Image Splitter for Instagram - Split your images for social media',
+        alt: 'Split Images Online - Free & Fast Image Splitter Tool',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Image Splitter for Instagram | Split Images for Social Media | Free Online Tool',
-    description: 'Free online tool to split images for Instagram, Facebook, Twitter and other social media. Create perfect grid layouts, split images horizontally or vertically. Supports all popular formats.',
-    images: ['/og-image.jpg'],
+    title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
+    description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, web layouts, and more.',
+    images: ['/og.png'],
   },
   alternates: {
     canonical: 'https://image-split.com',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     google: 'CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc',
   },
   category: 'image editing',
-  classification: 'image splitter, social media tools, instagram tools',
+  classification: 'image splitter, social media tools, instagram tools, photo editing',
   referrer: 'origin-when-cross-origin',
   authors: [{ name: 'Image Splitter Team' }],
   creator: 'Image Splitter Team',

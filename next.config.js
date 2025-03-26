@@ -5,6 +5,13 @@ const nextConfig = {
     domains: ['image-split.com'],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image-split.com',
+        pathname: '/**',
+      },
+    ],
   },
   trailingSlash: true,
   compress: true,

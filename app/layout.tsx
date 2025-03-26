@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: 'Image-Split.com',
     images: [
       {
-        url: '/og.png',
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/og.png`,
         width: 1200,
         height: 630,
         alt: 'Split Images Online - Free & Fast Image Splitter Tool',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
     description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, web layouts, and more.',
-    images: ['/og.png'],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/og.png`],
   },
   alternates: {
     canonical: 'https://image-split.com',

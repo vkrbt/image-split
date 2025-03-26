@@ -10,7 +10,8 @@ const inter = Inter({
   display: 'swap',
   preload: true,
   adjustFontFallback: true,
-  variable: '--font-inter'
+  variable: '--font-inter',
+  fallback: ['system-ui', 'arial']
 })
 
 export const metadata: Metadata = {
@@ -100,6 +101,7 @@ export default function RootLayout({
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+          fetchPriority="high"
         />
         <JsonLd />
         <Script

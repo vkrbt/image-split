@@ -2,7 +2,7 @@
 
 import React, { useState, Suspense } from "react"
 import dynamic from "next/dynamic"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 import { Github } from "lucide-react"
 
 const ImageDropzone = dynamic(() => import("../components/ImageDropzone"), {
@@ -36,54 +36,27 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-6 md:py-12 min-h-screen">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        className="max-w-4xl mx-auto"
-      >
+      <div className="max-w-4xl mx-auto">
         <header className="text-center mb-8">
-          <motion.h1 
-            className="text-2xl md:text-4xl font-bold mb-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <h1 className="text-2xl md:text-4xl font-bold mb-2">
             Split Your Image Online
-          </motion.h1>
-          <motion.p 
-            className="text-[rgb(var(--foreground-dimmed))]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          </h1>
+          <p className="text-[rgb(var(--foreground-dimmed))]">
             Fast, free, and secure image splitting tool. Process your images directly in your browser - no server storage required.
-          </motion.p>
+          </p>
         </header>
 
         <section className="mb-8">
           <h2 className="sr-only">Free Image Splitter Tool</h2>
           <AnimatePresence mode="wait">
             {!image ? (
-              <motion.div
-                key="dropzone"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
+              <div key="dropzone">
                 <ImageDropzone onImageUpload={handleImageUpload} />
-              </motion.div>
+              </div>
             ) : (
-              <motion.div
-                key="splitter"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
+              <div key="splitter">
                 <ImageSplitter image={image} onReset={handleReset} />
-              </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </section>
@@ -176,7 +149,7 @@ export default function Home() {
             </footer>
           </section>
         </Suspense>
-      </motion.div>
+      </div>
     </main>
   )
 } 

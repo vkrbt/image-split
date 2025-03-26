@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
-  description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, web layouts, and more. Process images directly in your browser - no server storage.',
-  keywords: 'image splitter, split image online, split image tool, instagram grid maker, image grid splitter, photo splitter, image divider, split photos for instagram, free image splitter, browser-based image splitter, secure image splitter',
+  description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, AI-generated images (Midjourney, DALL-E), web layouts, and more. Process images directly in your browser - no server storage.',
+  keywords: 'image splitter, split image online, split image tool, instagram grid maker, image grid splitter, photo splitter, image divider, split photos for instagram, free image splitter, browser-based image splitter, secure image splitter, ai image splitter, midjourney splitter, dalle splitter, ai art splitter, split ai images, ai image grid splitter, split midjourney images, split dalle images',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
   openGraph: {
     title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
-    description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, web layouts, and more. Process images directly in your browser - no server storage.',
+    description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, AI-generated images (Midjourney, DALL-E), web layouts, and more. Process images directly in your browser - no server storage.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Image-Split.com',

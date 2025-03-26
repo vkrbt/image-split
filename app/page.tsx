@@ -70,8 +70,8 @@ export default function Home() {
               <p>Split images horizontally, vertically, or into a custom grid</p>
             </div>
             <div>
-              <h3 className="font-medium mb-2">Supported Formats</h3>
-              <p>Works with PNG, JPG, and WebP image formats</p>
+              <h3 className="font-medium mb-2">AI Image Support</h3>
+              <p>Perfect for splitting Midjourney, DALL-E, and other AI-generated images</p>
             </div>
             <div>
               <h3 className="font-medium mb-2">Free to Use</h3>
@@ -96,6 +96,21 @@ export default function Home() {
                 <li>Download your split images instantly</li>
               </ol>
             </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
+            <a
+              href="/instagram-guide"
+              className="px-4 py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              Instagram Grid Guide
+            </a>
+            <a
+              href="/ai-guide"
+              className="px-4 py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              AI Image Splitting Guide
+            </a>
           </div>
 
           <div className="mb-8">

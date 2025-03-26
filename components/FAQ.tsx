@@ -3,24 +3,28 @@ import { FC } from 'react';
 const FAQ: FC = () => {
   const faqs = [
     {
-      question: 'How do I split an image for Instagram grid?',
-      answer: 'Upload your image, select the grid layout option (2x2, 3x3, etc.), and our tool will automatically split your image into the perfect size for Instagram grid posts. You can then download each part separately.'
+      question: 'How do I split Midjourney 2x2 grid images?',
+      answer: 'Upload your Midjourney grid image, select the grid layout option (2x2), and our tool will automatically split it into four individual high-quality images. Each part will maintain the original resolution and quality.'
     },
     {
-      question: 'What image formats are supported?',
-      answer: 'We support all popular image formats including JPG, PNG, WebP, and GIF. The tool will maintain the original quality of your images while splitting them.'
+      question: 'Can I split DALL-E generated images?',
+      answer: 'Yes! Our tool works perfectly with DALL-E images. You can split both single images and multiple variation outputs into individual parts while maintaining the original quality.'
     },
     {
-      question: 'What are the recommended image sizes for Instagram?',
-      answer: 'For Instagram grid posts, the recommended size is 1080x1080 pixels. Our tool automatically optimizes your images to meet Instagram\'s requirements while maintaining quality.'
+      question: 'What image formats are supported for AI images?',
+      answer: 'We support all popular image formats including JPG, PNG, WebP, and GIF. The tool will maintain the original quality of your AI-generated images while splitting them.'
     },
     {
-      question: 'Can I split images for other social media platforms?',
-      answer: 'Yes! Our tool is perfect for creating image splits for Facebook, Twitter, and other social media platforms. You can customize the split dimensions based on each platform\'s requirements.'
+      question: 'How do I preserve image quality when splitting AI images?',
+      answer: 'Our tool processes images directly in your browser and maintains the original resolution and quality. We don\'t compress or degrade the quality of your AI-generated artwork.'
+    },
+    {
+      question: 'Can I create custom layouts for my AI images?',
+      answer: 'Yes! You can split your AI-generated images horizontally, vertically, or into custom grid patterns. This is perfect for creating unique layouts for your AI artwork.'
     },
     {
       question: 'Is this tool free to use?',
-      answer: 'Yes, our image splitter is completely free to use. There\'s no registration required, and you can split as many images as you need without any limitations.'
+      answer: 'Yes, our image splitter is completely free to use. There\'s no registration required, and you can split as many AI images as you need without any limitations.'
     }
   ];
 

@@ -16,10 +16,14 @@ export const downloadAllParts = (splitPreviews: string[]) => {
 export const downloadAllAsZip = async (splitPreviews: string[]) => {
   const zip = new JSZip()
   
-  splitPreviews.forEach((dataUrl, index) => {
-    const data = dataUrl.split(',')[1]
-    zip.file(`split_${index + 1}.png`, data, {base64: true})
-  })
+  for (const dataUrl of splitPreviews) {
+    // Fetch the image data from the URL
+    const response = await fetch(dataUrl)
+    const blob = await response.blob()
+    
+    // Add the blob to the zip file
+    zip.file(`split_${splitPreviews.indexOf(dataUrl) + 1}.png`, blob)
+  }
   
   const content = await zip.generateAsync({type: 'blob'})
   const link = document.createElement('a')

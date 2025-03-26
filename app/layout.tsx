@@ -5,7 +5,12 @@ import Script from 'next/script'
 import JsonLd from '@/components/JsonLd'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: true
+})
 
 export const metadata: Metadata = {
   title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
@@ -39,7 +44,7 @@ export const metadata: Metadata = {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/og.png`,
         width: 1200,
         height: 630,
-        alt: 'Split Images Online - Free & Fast Image Splitter Tool',
+        alt: 'Split Images Online - Free & Fast Image Splitter Tool'
       },
     ],
   },
@@ -90,8 +95,35 @@ export default function RootLayout({
       <head>
         <JsonLd />
         <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Image Splitter",
+              "description": "Free online tool to split images into multiple parts. Split images horizontally, vertically, or into a grid.",
+              "applicationCategory": "Image Processing Tool",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "featureList": [
+                "Split images horizontally",
+                "Split images vertically",
+                "Split images into grid",
+                "Support for PNG, JPG, WebP formats",
+                "No registration required"
+              ]
+            })
+          }}
+        />
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MHBTVPD8VT"
           strategy="afterInteractive"
+          async
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

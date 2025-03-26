@@ -9,7 +9,8 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
-  adjustFontFallback: true
+  adjustFontFallback: true,
+  variable: '--font-inter'
 })
 
 export const metadata: Metadata = {
@@ -91,12 +92,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
+        <link
+          rel="preload"
+          href="/fonts/inter-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <JsonLd />
         <Script
           id="structured-data"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -123,7 +132,6 @@ export default function RootLayout({
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MHBTVPD8VT"
           strategy="afterInteractive"
-          async
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

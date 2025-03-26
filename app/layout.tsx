@@ -65,6 +65,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'CYTnSrpWezOSPT0WFImc2buzX_L6kQue74rIc56hwIc',
+    yandex: 'a2169097daa66c39',
   },
   category: 'image editing',
   classification: 'image splitter, social media tools, instagram tools, photo editing',

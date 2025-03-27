@@ -34,11 +34,15 @@ const nextConfig = {
   headers: async () => {
     return [
       {
-        source: '/:all*(svg|jpg|png)',
+        source: '/:all*(svg|jpg|png|ico)',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Content-Type',
+            value: 'image/x-icon',
           },
         ],
       },

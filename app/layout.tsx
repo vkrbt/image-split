@@ -20,10 +20,11 @@ export const metadata: Metadata = {
   keywords: 'image splitter, split image online, split image tool, instagram grid maker, image grid splitter, photo splitter, image divider, split photos for instagram, free image splitter, browser-based image splitter, secure image splitter, ai image splitter, midjourney splitter, dalle splitter, ai art splitter, split ai images, ai image grid splitter, split midjourney images, split dalle images',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
+    shortcut: '/favicon.ico',
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],

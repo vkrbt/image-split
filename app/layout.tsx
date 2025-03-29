@@ -18,11 +18,14 @@ export const metadata: Metadata = {
   title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
   description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, AI-generated images (Midjourney, DALL-E), web layouts, and more. Process images directly in your browser - no server storage.',
   keywords: 'image splitter, split image online, split image tool, instagram grid maker, image grid splitter, photo splitter, image divider, split photos for instagram, free image splitter, browser-based image splitter, secure image splitter, ai image splitter, midjourney splitter, dalle splitter, ai art splitter, split ai images, ai image grid splitter, split midjourney images, split dalle images',
+  applicationName: 'Image Split',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
     ],
     shortcut: '/favicon.ico',
     apple: [

@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   applicationName: 'Image Split',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
@@ -39,6 +38,11 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Image Split',
+  },
   openGraph: {
     title: 'Split Images Online - Free & Fast Image Splitter | Image-Split.com',
     description: 'Instantly split your images into multiple parts with our fast and free image splitter tool. Perfect for Instagram grids, AI-generated images (Midjourney, DALL-E), web layouts, and more. Process images directly in your browser - no server storage.',
